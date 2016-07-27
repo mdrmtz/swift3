@@ -1,0 +1,118 @@
+//: Playground - noun: a place where people can play
+import UIKit
+var str = "Hello, playground"
+str = "Hello, Swift"
+let otherStr:String = str
+//otherStr = "xxx"
+var nextYear:Int,
+    bodyTemp:Float,
+    hasPet:Bool
+//var arrayOfInts: Array<Int>
+var arrayOfInts: [Int]
+//var dictionaryOfCapitalsByCountry: Dictionary<String,String>
+var dictionaryOfCapitalsByCountry: [String:String]
+var winningLoteryNumbers: Set<Int>
+let number = 42
+let fmStation:Float = 91.1
+var countingUp = ["one","two"]
+let secondElement = countingUp[1]
+let nameByParkingSpace = [13:"Alice",27: "Bob"]
+
+let emptyString = String()
+let ​e​m​p​t​y​A​r​r​a​y​O​f​I​n​t​s​ = [Int]()
+let e​m​p​t​y​S​e​t​O​f​F​l​o​a​t​s​ = Set<Float>()
+let defaultNumber = Int()
+let defaultBool = Bool()
+let meaningOfLife = String(number)
+let availableRooms = Set([205,411,412])
+let defaulFloat = Float()
+let floatFromLiteral = Float(3.14)
+let easyPi = 3.14
+let floatFromDouble = Float(easyPi)
+let floatingPi:Float = 3.14
+
+countingUp.count
+emptyString.isEmpty
+countingUp.append("Three")
+countingUp.insert("zero", atIndex:0)
+
+var reading1: Float?,
+reading2:Float?,
+reading3:Float?
+
+reading1 = 9.8
+reading2 = 9.2
+//reading3 = 9.7
+
+if let r1 = reading1,
+    r2 = reading2,
+    r3 = reading3 {
+    let avgReading = (r1 + r2 + r3) / 3
+}else {
+    let errorString = "Instrument reported a reading that was nil"
+}
+
+
+if let space = nameByParkingSpace[20] {
+    print (space)
+} else {
+    print("Space free")
+}
+
+let range = 0..<countingUp.count
+for index in range {
+    let  str = countingUp[index]
+    print("\(str)")
+}
+print("------------")
+for string in countingUp {
+    print("\(string)")
+}
+
+print("------------")
+
+for ( i, string ) in countingUp.enumerate() {
+     print("\(string) \(i)")
+}
+
+for ( space, name) in nameByParkingSpace {
+    let permit = "Space \(space): \(name)"
+}
+
+func greet(person: String, todaySpecial special:String) -> String {
+    return "Hello \(person),today’s lunch special: \(special)."
+}
+greet("Bob",todaySpecial:"Burger")
+
+func greet(person: String, _ todaySpecial:String) -> String {
+    return "Hello \(person),today’s lunch special: \(todaySpecial)."
+}
+greet("Bob","Burger")
+
+
+func greet(person: String, on day: String) -> String {
+    return "Hello \(person), today is \(day)."
+}
+greet("John", on:"Wednesday")
+
+func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
+    var min = scores[0]
+    var max = scores[0]
+    var sum = 0
+    
+    for score in scores {
+        if score > max {
+            max = score
+        } else if score < min {
+            min = score
+        }
+        sum += score
+    }
+    
+    return (min, max, sum)
+}
+let statistics = calculateStatistics([5, 3, 100, 3, 9])
+print(statistics.sum)
+print(statistics.max)
+print(statistics.min)
+print(statistics.2)
