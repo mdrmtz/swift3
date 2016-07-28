@@ -1,0 +1,154 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+
+func sumOf(numbers: Int...) -> Int {
+    var sum = 0
+    for number in numbers {
+        sum += number
+    }
+    return sum
+}
+sumOf()
+sumOf( 42, 597, 12)
+
+
+func average(numbers: Int...) -> Int {
+    var sum = 0
+    for number in numbers {
+        sum += number
+    }
+    
+    return sum/numbers.count
+}
+//average()
+average( 42, 597, 12)
+
+func returnFifteen() -> Int {
+    var y = 10
+    func add() {
+        y += 5
+    }
+    add()
+    return y
+}
+returnFifteen()
+
+
+func returnValue(value:Int) -> Int {
+    var y = value
+    
+    func add() {
+        y += 5
+    }
+    add()
+    
+    return y
+}
+returnValue(15)
+
+
+
+func makeIncrementer() ->   Int  -> Int   {
+    
+    func addOne(number: Int) -> Int {
+        return 1 + number
+    }
+    
+    return addOne
+}
+var increment = makeIncrementer()
+increment(7)
+
+//Functions are a first-class type. This means that a function can return another function as its value.
+
+func makeStrIncrementer() ->   Int -> String   {
+    
+    func addOne(number: Int) -> String {
+        return String(1+number)
+    }
+    
+    return addOne
+}
+var strIncrement = makeStrIncrementer()
+strIncrement(7)
+
+strIncrement = makeStrIncrementer()
+strIncrement(10)
+
+//A function can take another function as one of its arguments.
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+    for item in list {
+        if condition(item) {
+            return true
+        }
+    }
+    return false
+}
+
+func lessThanTen(number: Int) -> Bool {
+    return number < 10
+}
+hasAnyMatches([20, 19, 7, 12], condition: lessThanTen)
+
+
+func hasMatches() ->   [Int] -> Bool   {
+    
+    func check(number: [Int]) -> Bool {
+        
+        for item in number {
+            if lessThanTen(item) {
+                return true
+            }
+        }
+        return false
+    }
+    return check
+
+}
+var numbers = [1, 19, 7, 12]
+var matches = hasMatches()
+matches(numbers)
+
+numbers.map({(item: Int) -> Int in
+                    return 3 * item})
+
+
+numbers.map({
+    (number: Int) -> Int in
+    if number % 2 != 0  {
+        return 0
+    }else {
+        return 3 * number
+    }
+})
+
+
+numbers.map({
+    number -> Any in
+    if number % 2 != 0  {
+        return 0
+    }else {
+        return 3 * number
+    }
+})
+
+numbers.map({ number in 3 * number })
+print(numbers.map({ number in 3 * number }))
+numbers.map { number in 3 * number }
+
+print ( numbers.sort ({ $0 > $1 }) )
+
+
+print ( numbers.sort ({ $1 > $0 }) )
+
+
+
+print( numbers.sort { $0 > $1 }   )
+
+print( numbers.sort (>) )
+print( numbers.sort (<) )
+
+print( numbers.sort { $0 > $1 }   )
+
